@@ -52,7 +52,7 @@ services:
     build:
       context: ./front
     image: front:1
-    working_dir: /srv
+    working_dir: /srv/app
     ## command to keep the container on for remote development
     command: bash -c "tail -f /dev/null"
     #    command: bash -c "yarn develop" #
