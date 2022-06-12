@@ -1,5 +1,5 @@
 import React from "react";
-import firebase from "../../firebase.js";
+
 import {
   Grid,
   Form,
@@ -10,6 +10,11 @@ import {
   Icon,
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+
+import {
+  auth_local,
+  createUserWithEmailAndPassword_local,
+} from "../../firebase.js";
 
 class Register extends React.Component {
   state = {
@@ -25,9 +30,12 @@ class Register extends React.Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    firebase
-      .auth()
-      .createUserWithEailAndPassword(this.state.email, this.state.password)
+
+    createUserWithEmailAndPassword_local(
+      auth_local,
+      this.state.email,
+      this.state.password
+    )
       .then((createdUser) => {
         console.log(createdUser);
       })
