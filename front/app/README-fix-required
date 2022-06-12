@@ -1,0 +1,4 @@
+## semantic-ui-css bug
+
+https://github.com/Semantic-Org/Semantic-UI-CSS/issues/75
+replace node_modules/semantic-ui-css/semantic.min.css with \_semantic.min.css
