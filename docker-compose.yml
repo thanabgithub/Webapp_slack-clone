@@ -12,18 +12,20 @@ services:
     ports:
       - 80:80
       - 443:443
-    environment:
-      API_DOMAIN: ${API_DOMAIN}
-      FRONT_DOMAIN: ${FRONT_DOMAIN}
+    # environment:
+    #   API_DOMAIN: ${API_DOMAIN}
+    #   FRONT_DOMAIN: ${FRONT_DOMAIN}
     command: sh -c "envsubst '$$API_DOMAIN $$FRONT_DOMAIN' < /etc/nginx/_nginx.conf > /etc/nginx/nginx.conf && exec nginx -g 'daemon off;'"
     dns:
-      - 172.17.0.1
       - 1.1.1.1
+      - 172.17.0.1
       - 8.8.8.8
     network_mode: bridge
     links:
       #      - api
       - front
+    env_file:
+      - .env
 
   # api:
   #   hostname: api
@@ -62,7 +64,9 @@ services:
       - 3000:3000
     network_mode: bridge
     dns:
-      - 172.17.0.1
       - 1.1.1.1
+      - 172.17.0.1
       - 8.8.8.8
     restart: always
+    env_file:
+      - .env
