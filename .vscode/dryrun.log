@@ -1,0 +1,8 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/root/workspace/ws_rests_reviews/rests-reviews'
+docker-compose -down -v -t 1
+docker system prune -f
+echo "\n    🡇 CONTAINER TERMINAL 🡇\n\n"
+docker-compose up --build -d
+make: Leaving directory '/root/workspace/ws_rests_reviews/rests-reviews'
+ 
